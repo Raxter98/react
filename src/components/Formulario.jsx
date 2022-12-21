@@ -1,7 +1,8 @@
 import { useState } from "react";
+import Error from "./Error";
 
 
-function Formulario(){
+function Formulario({paciente,setPaciente}){
 
     const [nombre,setNombre] = useState("")
     const [propietario,setPropietario] = useState("")
@@ -11,12 +12,18 @@ function Formulario(){
 
     const [error, setError]= useState(false)
 
+    const  generarId = () => {
+        const random = Math.random().toString(36).substr(2);
+        const fecha = Date.now().toString(36);
+        return fecha + random
+    }
+
     const handleSubmit = (e) => {
        
-
+        e.preventDefault();
 
         if ([nombre, propietario,email,alta,sintomas].includes("")){
-            e.preventDefault();
+            
             
 
             setError(true)
@@ -25,10 +32,25 @@ function Formulario(){
         }
 
     
-        (e) => (false)
+        /* (e) => (false) */
+        setError(false)
         
-        
+        const objetoPaciente = {
+            nombre, 
+            propietario,
+            email,
+            alta,
+            sintomas,
+            id: generarId()
+        }
 
+        setPaciente([...paciente,objetoPaciente])
+
+        setNombre("")
+        setPropietario("")
+        setEmail("")
+        setAlta("")
+        setSintomas("")
     } 
 
     return( 
@@ -46,7 +68,7 @@ function Formulario(){
 
             <form onSubmit={handleSubmit} className="bg-white shadow-md py-10 px-5 mt-4 rounded-lg ">
 
-                {error && (<div className="bg-red-900 p-4 font-bold text-center rounded-sm text-white"><p>todos los campos son obligatorios</p></div>) }
+                {error && <Error msj={"Todos los campos deben de estar llenos"} /> }
 
                <div>
 

@@ -1,6 +1,6 @@
-function Header({hola}){ 
+function Header(){ 
     
-    console.log(hola)
+
     
     return (
 

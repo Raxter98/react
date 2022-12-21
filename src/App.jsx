@@ -5,25 +5,23 @@ import { useState } from "react"
 
 function App() {
 
-  const [array,setArray] = useState([]);
+  const [paciente,setPaciente] = useState([]);
   
-  const arrowfunction = () => {
-
-      
-    2 + 2
-    return
-  } 
+  
 
   return (
     <div className="container mx-auto mt-20">
 
-        <Header 
-          hola={arrowfunction}
-        />
+        <Header />
 
         <div className="mt-12 md:flex">
-          <Formulario /> 
-          <ListadoPacientes />
+          <Formulario 
+          paciente = {paciente}
+          setPaciente = {setPaciente}
+          /> 
+          <ListadoPacientes 
+           paciente = {paciente} 
+          />
         </div>
 
              
