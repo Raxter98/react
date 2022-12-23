@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Error from "./Error";
 
 
-function Formulario({paciente,setPaciente}){
+function Formulario({paciente,setPaciente,editarPaciente}){
 
     const [nombre,setNombre] = useState("")
     const [propietario,setPropietario] = useState("")
@@ -52,6 +52,21 @@ function Formulario({paciente,setPaciente}){
         setAlta("")
         setSintomas("")
     } 
+
+    useEffect(() =>{
+        if (Object.keys(paciente).length > 0){ 
+            
+            setNombre(editarPaciente.nombre)
+            setPropietario(editarPaciente.propietario)
+            setEmail(editarPaciente.email)
+            setAlta (editarPaciente.alta)
+            setSintomas(editarPaciente.sintomas)
+        console.log("nuevo paciente")
+    }else{
+        console.log("no hay pacientes")
+    }
+    },[paciente])
+
 
     return( 
 

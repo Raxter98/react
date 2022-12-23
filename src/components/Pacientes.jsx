@@ -1,6 +1,11 @@
-function Pacientes({datosPacientes }){
+
+function Pacientes({datosPacientes, setEditarPaciente }){
 
     const {nombre, propietario,email,alta,sintomas,key } = datosPacientes;
+   
+    
+
+    
 
     return (
 
@@ -25,6 +30,16 @@ function Pacientes({datosPacientes }){
             <p className="font-bold uppercase mb-2">
                 sintomas: <span className="font-light normal-case"> { sintomas} </span>
             </p>
+
+            <div className="flex justify-between">
+                <button type="button" onClick={()=>setEditarPaciente(datosPacientes)} className="bg-indigo-600  hover:bg-indigo-700 uppercase font-bold py-2 px-10 text-white rounded-lg">
+                    editar</button>
+                
+                
+                <button type="button" className="bg-red-600  hover:bg-red-700 uppercase font-bold py-2 px-10 text-white rounded-lg ">
+                    eliminar</button>
+
+            </div>
 
         
         </div>
